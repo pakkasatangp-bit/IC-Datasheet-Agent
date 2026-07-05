@@ -7,7 +7,7 @@ from gemini_helper import ask_gemini
 st.set_page_config(page_title="IC Datasheet AI Agent", layout="wide", page_icon="⚡")
 
 st.title("⚡ IC Datasheet Assistant Agent")
-st.write("อัปโหลดไฟล์ PDF Datasheet ของชิ้นส่วนอิเล็กทรอนิกส์ แล้วพิมพ์ถามคำถามที่ต้องการรู้ได้เลยครับ")
+st.write("อัปโหลดไฟล์ PDF Datasheet ของชิ้นส่วนอิเล็กทรอนิกส์ แล้วพิมพ์ถามคำถามที่ต้องการรู้ได้เลย!")
 
 # 2. ส่วนสำหรับอัปโหลดไฟล์ PDF Datasheet
 uploaded_file = st.file_uploader("เลือกไฟล์ PDF Datasheet (เช่น tl082.pdf)", type=["pdf"])
@@ -38,7 +38,7 @@ if uploaded_file is not None:
         # 5. ปุ่มกดเพื่อให้ AI เริ่มทำงาน
         if st.button("ถาม AI Agent"):
             if user_question:
-                with st.spinner('AI Agent กำลังค้นหาข้อมูลจาก Datasheet และเรียบเรียงคำตอบ...'):
+                with st.spinner('AI Agent กำลังค้นหาข้อมูลจาก Datasheet และเรียบเรียงคำตอบ กรุณารอสักครู่...'):
                     try:
                         # เรียกใช้ฟังก์ชัน AI ที่เราเขียนไว้ใน gemini_helper.py
                         answer = ask_gemini(pdf_text, user_question)
@@ -48,4 +48,4 @@ if uploaded_file is not None:
                     except Exception as e:
                         st.error(f"เกิดข้อผิดพลาดในการเชื่อมต่อระบบ AI: {e}")
             else:
-                st.warning("กรุณาพิมพ์คำถามก่อนกดปุ่มถาม AI Agent ครับ")
+                st.warning("กรุณาพิมพ์คำถามก่อนกดปุ่มถาม AI Agent")
